@@ -26,7 +26,7 @@ dependencies:
     # authenticate gcloud
     - gcloud auth activate-service-account --key-file ${HOME}/client-secret.json
     # Replace <your-project-id>
-    - gcloud config set project <your-project-id>
+    - gcloud config set project continuous-deployment-circle
 
 test:
   override:
