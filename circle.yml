@@ -1,0 +1,43 @@
+# Copyright 2015, Google, Inc.
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+# this file except in compliance with the License. You may obtain a copy of the
+# License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable
+# law or agreed to in writing, software distributed under the License is distributed
+# on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+# or implied. See the License for the specific language governing permissions and
+# limitations under the License.
+
+machine:
+  environment:
+    # Add app engine sdk to pythonpath for local unit tests.
+    PYTHONPATH: ${PYTHONPATH}:${HOME}/google_appengine
+
+dependencies:
+  pre:
+    # Download App Engine SDK
+    # This is not necessary to deploy, its only necessary  to run local tests importing the App Engine SDK
+    - curl -o $HOME/google_appengine_1.9.30.zip https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.30.zip
+    - unzip -q -d $HOME $HOME/google_appengine_1.9.30.zip
+    # Retrieve our secrets from the CircleCI environment
+    - echo $CLIENT_SECRET | base64 --decode > ${HOME}/client-secret.json
+    - echo $API_KEY | base64 --decode > ${HOME}/api_key.py
+    # Make sure gcloud is up to date
+    - gcloud --quiet components update app
+    # authenticate gcloud
+    - gcloud auth activate-service-account --key-file ${HOME}/client-secret.json
+    # Replace <your-project-id>
+    - gcloud config set project <your-project-id>
+
+test:
+  override:
+    # run local unit tests
+    - python test_main.py
+
+deployment:
+    staging:
+        branch: master
+        commands:
+        # deploy to AppEngine
+        - gcloud -q preview app deploy app.yaml --promote --version=1
+        # Run our E2E Test
+        - python e2e_test.py
