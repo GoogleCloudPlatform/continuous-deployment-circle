@@ -20,7 +20,7 @@ dependencies:
     - unzip -q -d $HOME $HOME/google_appengine_1.9.30.zip
     # Retrieve our secrets from the CircleCI environment
     - echo $CLIENT_SECRET | base64 --decode > ${HOME}/client-secret.json
-    - echo $API_KEY | base64 --decode > ${HOME}/continuous-deployment-circle/api_key.py
+    - sed  s/YOUR-API-KEY/$API_KEY/ api_key.py.sample > api_key.py
     # Make sure gcloud is up to date
     - gcloud --quiet components update app
     # authenticate gcloud
