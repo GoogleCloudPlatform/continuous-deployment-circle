@@ -15,7 +15,7 @@ Replace HOST with the URL your project will be deployed to.
 import urllib2
 import logging
 
-HOST='http://<your-project-i>.appspot.com'
+HOST='https://1-dot-continuous-deployment-circle.appspot.com/get_author/ulysses.appspot.com'
 
 # [START e2e]
 response = urllib2.urlopen("{}/get_author/ulysses".format(HOST))

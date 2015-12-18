@@ -25,6 +25,11 @@ app = Flask(__name__)
 
 from api_key import key
 
+@app.route('/')
+def index():
+    return "Use the /get_author/<title> endpoint to get the author of a book."
+        
+
 # [START app]
 @app.route('/get_author/<title>')
 def get_author(title):
