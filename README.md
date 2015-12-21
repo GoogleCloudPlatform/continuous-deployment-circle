@@ -32,7 +32,6 @@ Both of the credentials need to be base64 encoded and added to the Circle CI pro
 * In e2e_test.py, replace the <your-project-id> in the HOST variable with the URL your project will be deployed to `https://your-project-id.appspot.com`.
 * Commit and push your changes. The circle project should run the local tests, then use the gcloud SDK (authenticated with the client-secret) to deploy to the appspot URL, then run the e2e tests against that URL.
 
-## Steps to deploy to your own App Engine project
 ## Contributing changes
 
 * See [CONTRIBUTING.md](CONTRIBUTING.md)
