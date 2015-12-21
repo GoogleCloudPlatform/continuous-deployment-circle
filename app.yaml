@@ -7,14 +7,9 @@
 # or implied. See the License for the specific language governing permissions and
 # limitations under the License.
 
-runtime: python27
-api_version: 1
-threadsafe: yes
-
-# Handlers define how to route requests to your application.
-handlers:
-- url: .*  # This regex directs all routes to main.app
-  script: main.app
+runtime: custom
+vm: true
+entrypoint: custom
 
 # temporary workaround around gcloud issue
 skip_files:

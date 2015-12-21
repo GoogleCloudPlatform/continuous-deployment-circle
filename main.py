@@ -17,18 +17,18 @@ It uses the Google Books API to search for the author of a book title.
 
 import urllib2
 import json
-from google.appengine.ext import vendor
-vendor.add('lib')
-
 from flask import Flask
 app = Flask(__name__)
 
 from api_key import key
 
+@app.route('/_ah/health')
+def health_check():
+        return 'ok', 200
+
 @app.route('/')
 def index():
     return "Use the /get_author/<title> endpoint to get the author of a book."
-        
 
 # [START app]
 @app.route('/get_author/<title>')
@@ -47,4 +47,4 @@ def get_author(title):
 # [END app]
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
