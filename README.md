@@ -1,5 +1,7 @@
 # Sample of how to deploy from Circle CI and run an end-to-end test
 
+https://circleci.com/gh/GoogleCloudPlatform/continuous-deployment-circle.png?circle-token=73d9769ac94a3e1aebc919b1f32dcfff6e02f688
+
 This repo demonstrates how to deploy to Google Cloud from a
 Circle CI file and run an end to end test (in e2e_test.py) against
 a staging environment.
