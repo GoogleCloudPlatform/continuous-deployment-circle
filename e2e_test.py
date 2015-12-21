@@ -15,6 +15,7 @@ Replace HOST with the URL your project will be deployed to.
 import urllib2
 import logging
 
+# The circle.yml deploys to version 1, which maps to this URL
 HOST='https://1-dot-continuous-deployment-circle.appspot.com/'
 
 # [START e2e]
