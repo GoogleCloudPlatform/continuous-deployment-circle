@@ -24,7 +24,7 @@ Both of the credentials need to be base64 encoded and added to the Circle CI pro
     `base64 <your_secret.json>`
 
 * Copy the output of the base64 command into the 'Value' form, with the name CLIENT_SECRET, then click `Save Variable`.
-* Base64 encdode the api_ke.py file
+* Base64 encdode the api_key.py file
 
     `base64 api_key.py`
 *  Copy the output of the base64 command into the 'Value' form, with the Name field set to API_KEY. Click `Save Variable`.
